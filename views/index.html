@@ -5,8 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Microservicio de marca de tiempo</title>
     <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+    <div class="container">
+        <div class="row">
+            <div class="d-flex justify-content-center align-items-center col mb-4 mt-4 mx-auto">
+                <div class="card" style="width: max-content;">
+                    <div class="card-body">
+                        <h3 class="card-title text-center" id="card-title">Microservicio de marca de tiempo</h3>
+                        <hr>
+                        <p class="card-text" id="card-text">Por rellene el campo a continuacion</p>
+                        <select class="form-select mb-3" aria-label="Default select example" id="selector">
+                            <option value="0" selected>Selecciona un formato de tiempo</option>
+                            <option value="1">Unix</option>
+                            <option value="2">UTC</option>
+                        </select>
+                        <div id="unix" class="form-floating mb-3 d-none">
+                            <input type="number" class="form-control" id="e1" placeholder="Codigo de tiempo Unix">
+                            <label for="floatingInput">Codigo de tiempo Unix</label>
+                        </div>
+                        <div id="utc" class="utc form-floating mb-3 d-none">
+                            <input class="form-control" type="date" id="e2">
+                            <label for="floatingInput">Fecha</label>
+                        </div>
+                        <a href="#" id="btn-search" class="btn btn-primary d-none">Buscar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script type="text/javascript" src="./bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/index.js"></script>
 </body>
 </html>
