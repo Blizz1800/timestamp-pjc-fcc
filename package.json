@@ -1,0 +1,29 @@
+{
+  "name": "timestamp-pjc-fcc",
+  "version": "1.0.0",
+  "description": "Un proyecto de Microservicio de marca de tiempo orientado por freecodecamp.org",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Blizz1800/timestamp-pjc-fcc.git"
+  },
+  "keywords": [
+    "freecodecamp",
+    "timestamp",
+    "project"
+  ],
+  "author": "Blizz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Blizz1800/timestamp-pjc-fcc/issues"
+  },
+  "homepage": "https://github.com/Blizz1800/timestamp-pjc-fcc#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2"
+  }
+}
