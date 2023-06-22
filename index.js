@@ -18,6 +18,12 @@ app.get('/', (req, res) => {    // Sirviendo el root con el archivo index.html
         res.sendFile(views + 'index.html'); // Enviar el archivo index.html al cliente 
     });
 
+app.get('/api/', (req, res) => {
+    let utc = new Date().toUTCString();
+    let unix = new Date().getTime();
+    res.send({unix: unix, utc: utc});
+});
+
 app.get('/api/:query', (req, res) => {
     let query = req.params.query
     if (/^\d+$/.test(query)) // Verificar si query esta compuesto solo por numeros
@@ -25,7 +31,10 @@ app.get('/api/:query', (req, res) => {
     let utc = new Date(query).toUTCString(); // Almacenamos el objeto de fecha en una variable con formato UTC
     let unix = new Date(query).getTime(); // Almacenamos el objeto de fecha en una variable con formato unix
 
-    res.send({unix: unix, utc: utc});
+    if (utc === "Invalid Date") 
+        res.send({error: utc});
+    else 
+        res.send({unix: unix, utc: utc});
 });
 
 app.listen(process.env.PUERTO, () => { // Pone al servidor en escucha en el puerto especificado
