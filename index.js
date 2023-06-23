@@ -14,6 +14,18 @@ app.use(express.static(path.join(__dirname,'/public'))) // Definir la ruta de ar
 app.use('/bootstrap/css', express.static(path.join(__dirname, '/node_modules/bootstrap/dist/css/'))); // Cargar los componentes de bootstrap (CSS)
 app.use('/bootstrap/js', express.static(path.join(__dirname, '/node_modules/bootstrap/dist/js/'))); // Cargar los componentes de bootstrap (JavaScript)
 
+app.use((req, res, next) => {
+    console.log({
+        ip: req.ip,
+        query: req.query,
+        params: req.params,
+        body: req.body,
+        url: req.url
+    })
+
+    next()
+})
+
 app.get('/', (req, res) => {    // Sirviendo el root con el archivo index.html
         res.sendFile(views + 'index.html'); // Enviar el archivo index.html al cliente 
     });
