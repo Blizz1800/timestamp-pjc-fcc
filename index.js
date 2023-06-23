@@ -18,23 +18,23 @@ app.get('/', (req, res) => {    // Sirviendo el root con el archivo index.html
         res.sendFile(views + 'index.html'); // Enviar el archivo index.html al cliente 
     });
 
-app.get('/api/', (req, res) => {
-    let utc = new Date().toUTCString();
-    let unix = new Date().getTime();
-    res.send({unix: unix, utc: utc});
-});
-
-app.get('/api/:query', (req, res) => {
-    let query = req.params.query
-    if (/^\d+$/.test(query)) // Verificar si query esta compuesto solo por numeros
-        query = parseInt(query)
-    let utc = new Date(query).toUTCString(); // Almacenamos el objeto de fecha en una variable con formato UTC
-    let unix = new Date(query).getTime(); // Almacenamos el objeto de fecha en una variable con formato unix
-
-    if (utc === "Invalid Date") 
-        res.send({error: utc});
-    else 
+app.get('/api/:date?', (req, res) => {
+    let query = req.params.date
+    if (query) {
+        if (/^\d+$/.test(query)) // Verificar si query esta compuesto solo por numeros
+            query = parseInt(query)
+        let utc = new Date(query).toUTCString(); // Almacenamos el objeto de fecha en una variable con formato UTC
+        let unix = new Date(query).getTime(); // Almacenamos el objeto de fecha en una variable con formato unix
+        
+        if (utc === "Invalid Date") 
+            res.send({error: utc});
+        else 
+            res.send({unix: unix, utc: utc});
+    }else{
+        let utc = new Date().toUTCString();
+        let unix = new Date().getTime();
         res.send({unix: unix, utc: utc});
+    }
 });
 
 app.listen(process.env.PUERTO, () => { // Pone al servidor en escucha en el puerto especificado
