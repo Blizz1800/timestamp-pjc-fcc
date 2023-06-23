@@ -27,13 +27,13 @@ app.get('/api/:date?', (req, res) => {
         let unix = new Date(query).getTime(); // Almacenamos el objeto de fecha en una variable con formato unix
         
         if (utc === "Invalid Date") 
-            res.send({error: utc});
+            res.json({error: utc});
         else 
-            res.send({unix: unix, utc: utc});
+            res.json({unix: unix, utc: utc});
     }else{
         let utc = new Date().toUTCString();
         let unix = new Date().getTime();
-        res.send({unix: unix, utc: utc});
+        res.json({unix: unix, utc: utc});
     }
 });
 
